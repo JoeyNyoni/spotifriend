@@ -11,13 +11,12 @@ export default {
     context.commit("setAlbum", album);
   },
 
-  async getNewAlbums(context: any, limit = 10, offset = 0) {
+  async getNewAlbums(context: any, limit = 8, offset = 0) {
     const result = await axios.get(`${API_URL}/browse/new-releases`, {
       headers: { Authorization: `Bearer ${bearerToken}` },
       params: { limit, offset },
     });
     const newAlbums = result ? result.data?.albums.items : [];
-    console.log("newAlbums", newAlbums);
     context.commit("setNewAlbums", newAlbums);
   },
 };

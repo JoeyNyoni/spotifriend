@@ -1,5 +1,8 @@
 <template>
   <nav>
+    <h1>
+      <router-link to="/">SpotiFriend</router-link>
+    </h1>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
   </nav>
@@ -17,6 +20,9 @@
 
 nav {
   padding: 30px;
+  margin: auto;
+  align-items: center;
+  background-color: #1db954;
 }
 
 nav a {
@@ -25,6 +31,10 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: white;
+}
+
+h1 {
+  margin: 0;
 }
 </style>

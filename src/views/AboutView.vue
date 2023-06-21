@@ -8,7 +8,6 @@
 export default {
   created() {
     this.getArtist();
-    this.getNewAlbums();
     this.getTrack();
     this.search();
   },
@@ -34,13 +33,6 @@ export default {
         await this.$store.dispatch("tracks/getTrack", {
           trackId: "11dFghVXANMlKmJXsNCbNl",
         });
-      } catch (error: any) {
-        console.log(error.message);
-      }
-    },
-    async getNewAlbums() {
-      try {
-        await this.$store.dispatch("albums/getNewAlbums");
       } catch (error: any) {
         console.log(error.message);
       }
