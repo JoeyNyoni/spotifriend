@@ -23,6 +23,7 @@ module.exports = {
         singleQuote: false,
       },
     ],
+    "vue/comment-directive": 0,
   },
   overrides: [
     {
