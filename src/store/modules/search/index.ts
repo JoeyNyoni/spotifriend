@@ -6,7 +6,8 @@ export default {
   namespaced: true,
   state() {
     return {
-      searchResults: null,
+      searchResults: [],
+      selectedItem: null,
     };
   },
   mutations,

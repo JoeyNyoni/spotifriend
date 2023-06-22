@@ -26,4 +26,10 @@ export default {
     console.log("search", searchResult);
     context.commit("setSearchResults", searchResult);
   },
+  changeSelectedItem(context: any, payload: any) {
+    context.commit("setSelectedItem", payload);
+  },
+  deleteSelectedItem(context: any) {
+    context.commit("setSelectedItem", null);
+  }
 };
