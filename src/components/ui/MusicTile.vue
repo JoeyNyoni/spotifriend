@@ -2,7 +2,14 @@
   <basic-card>
     <div class="container">
       <div class="row">
-        <img v-bind:src="item?.images[1]?.url" />
+        <router-link
+          :to="{
+            name: 'music-view',
+            params: { id: item.id },
+          }"
+        >
+          <img v-bind:src="item?.images[1]?.url" v-bind:alt="item.name" />
+        </router-link>
       </div>
       <div class="row description">
         <p>{{ item.name }}</p>
@@ -21,7 +28,6 @@ export default {
     };
   },
   created() {
-    console.log(this.item);
     this.getFullArtists();
   },
   methods: {
