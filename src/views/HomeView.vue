@@ -1,12 +1,14 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-
     <basic-card>
       <div class="container" v-if="!isLoading">
         <h2>Check out new releases for you!</h2>
         <div class="row">
-          <div v-for="item in newAlbums" :key="item" class="col-xs-4 col-xl-4">
+          <div
+            v-for="item in newAlbums"
+            :key="item"
+            class="col-xs-12 col-sm-6 col-md-3 col-lg-3 col-xl-3"
+          >
             <music-tile :item="item"></music-tile>
           </div>
         </div>
