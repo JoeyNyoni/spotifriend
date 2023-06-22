@@ -8,9 +8,11 @@ import router from "./router";
 import store from "./store";
 
 import BasicCard from "./components/ui/BasicCard.vue";
+import BasicButton from "./components/ui/BasicButton.vue";
 
 createApp(App)
   .use(store)
   .use(router)
   .component("BasicCard", BasicCard)
+  .component("BasicButton", BasicButton)
   .mount("#app");
