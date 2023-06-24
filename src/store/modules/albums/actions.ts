@@ -7,7 +7,6 @@ export default {
       headers: { Authorization: `Bearer ${bearerToken}` },
     });
     const album = result ? result.data : null;
-    console.log(album);
     context.commit("setAlbum", album);
   },
 

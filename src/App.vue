@@ -5,9 +5,31 @@
     </h1>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+
+    <button id="show-modal" @click="showModal = true">
+      Search For Artists
+    </button>
+    <Teleport to="body">
+      <basic-modal :show="showModal" @close="showModal = false">
+        <template #body>
+          <search-bar></search-bar>
+        </template>
+      </basic-modal>
+    </Teleport>
   </nav>
+
   <router-view />
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      showModal: false,
+    };
+  },
+};
+</script>
 
 <style>
 #app {
