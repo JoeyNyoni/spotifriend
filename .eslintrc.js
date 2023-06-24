@@ -16,13 +16,7 @@ module.exports = {
     "@typescript-eslint/no-explicit-any": "off",
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-        singleQuote: false,
-      },
-    ],
+    "prettier/prettier": 0,
     "vue/comment-directive": 0,
   },
   overrides: [
