@@ -43,7 +43,6 @@ export default {
         this.isLoading = true;
         await this.$store.dispatch("albums/getNewAlbums");
         this.newAlbums = this.$store.getters["albums/newAlbums"];
-        console.log(typeof this.newAlbums);
         this.isLoading = false;
       } catch (error: any) {
         this.errorMsg = error.message;

@@ -1,6 +1,7 @@
 export const API_URL = "https://api.spotify.com/v1";
-export const bearerToken =
-  "BQCgiFW0qex8ADnRrd7NNXYjdmbP0LQLdQDVzbUwZflQaa9IaSvLGO7BK-qr8mg1A6kHB6lQIv5Rl5Gn_TAHlin3zqNMXk0zfRX-wpGnFUVe90K50Sw";
+
+export const bearerToken = "BQADG2uIiBWsoYc5Ywmy0h5wW56zNfxum-BL8HylTQC3ncGk85IrGBrELos6GDnArBh7gZPnEJvpw0roAtBO9EcvIAw8aPrA_bPhv4hZ4xEiKIjjX8k";
+
 export const musicType = {
   ARTIST: "artist",
   ALBUM: "album",

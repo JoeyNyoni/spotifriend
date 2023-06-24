@@ -1,4 +1,3 @@
-<!-- eslint-disable prettier/prettier -->
 <template>
   <basic-card>
     <div class="container">
@@ -8,25 +7,12 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="row">
-            <span>
-              Artist:
-              <p>{{ fullArtists }}</p>
-            </span>
-            <span>
-              Name:
-              <p>{{ item.name }}</p>
-            </span>
-            <span>
-              Release Date:
-              <p>{{ item.release_date }}</p>
-            </span>
+            <span>Artist: <p>{{ fullArtists }}</p></span>
+            <span>Name: <p>{{ item.name }}</p></span>
+            <span>Release Date: <p>{{ item.release_date }}</p></span>
             <div class="row">
-              <basic-button link :to="item.external_urls.spotify"
-                >View in Spotify</basic-button
-              >
-              <basic-button link :to="item.external_urls.spotify"
-                >Share The Music</basic-button
-              >
+              <basic-button link :to="item.external_urls.spotify">View in Spotify</basic-button>
+              <basic-button link :to="item.external_urls.spotify">Share The Music</basic-button>
             </div>
           </div>
         </div>
@@ -38,7 +24,6 @@
 </template>
 
 <script lang="ts">
-import { musicType } from "@/helpers/constants";
 export default {
   props: ["id"],
   data() {
@@ -48,7 +33,6 @@ export default {
     };
   },
   created() {
-    console.log(this.id);
     if (this.item && !this.$store.getters["search/selectedItem"]) {
       this.item = this.$store.getters["search/searchResults"].find(
         (item: any) => item.id === this.id

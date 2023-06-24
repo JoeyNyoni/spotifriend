@@ -3,12 +3,11 @@
     <h1>
       <router-link to="/">SpotiFriend</router-link>
     </h1>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
 
-    <button id="show-modal" @click="showModal = true">
+    <basic-button id="show-modal" @click="showModal = true">
       Search For Artists
-    </button>
+    </basic-button>
+
     <Teleport to="body">
       <basic-modal :show="showModal" @close="showModal = false">
         <template #body>
