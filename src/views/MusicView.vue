@@ -1,4 +1,14 @@
 <template>
+  <Teleport to="body">
+    <basic-modal :show="toggleShowModal" @close="toggleShowModal = false">
+      <template #header>
+        <h2>Share Music</h2>
+      </template>
+      <template #body>
+        <share-form @on-submit="sendEmail"></share-form>
+      </template>
+    </basic-modal>
+  </Teleport>
   <basic-card>
     <div class="container">
       <div v-if="item" class="row">
@@ -11,8 +21,8 @@
             <span>Name: <p>{{ item.name }}</p></span>
             <span>Release Date: <p>{{ item.release_date }}</p></span>
             <div class="row">
-              <basic-button link :to="item.external_urls.spotify">View in Spotify</basic-button>
-              <basic-button link :to="item.external_urls.spotify">Share The Music</basic-button>
+              <basic-button link @click="goToLink(item.external_urls.spotify)">View in Spotify</basic-button>
+              <basic-button @click="toggleShowModal = true">Share The Music</basic-button>
             </div>
           </div>
         </div>
@@ -24,12 +34,17 @@
 </template>
 
 <script lang="ts">
+import ShareForm from "../components/forms/ShareForm.vue";
 export default {
+  components: {
+    ShareForm
+  },
   props: ["id"],
   data() {
     return {
       item: null,
       selectedType: "",
+      toggleShowModal: false,
     };
   },
   created() {
@@ -44,6 +59,15 @@ export default {
     }
     console.log(this.item);
     this.$store.dispatch("search/changeSelectedItem", this.item);
+  },
+  methods: {
+    goToLink(link: string) {
+      window.open(link, '_blank', 'noreferrer');
+    },
+    sendEmail(data) {
+      console.log(data);
+      this.toggleShowModal = false;
+    }
   },
   computed: {
     fullArtists() {

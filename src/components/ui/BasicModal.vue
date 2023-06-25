@@ -4,7 +4,7 @@
       <div class="modal-wrapper">
         <div class="modal-container">
           <div class="modal-header">
-            <slot name="header">Search For Artist</slot>
+            <slot name="header">Basic Modal</slot>
           </div>
   
           <div class="modal-body">
