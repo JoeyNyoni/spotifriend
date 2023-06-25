@@ -4,12 +4,15 @@
       <router-link to="/">SpotiFriend</router-link>
     </h1>
 
-    <basic-button id="show-modal" @click="showModal = true">
+    <basic-button id="show-modal" @click="toggleShowModal = true">
       Search For Artists
     </basic-button>
 
     <Teleport to="body">
-      <basic-modal :show="showModal" @close="showModal = false">
+      <basic-modal :show="toggleShowModal" @close="toggleShowModal = false">
+        <template #header>
+          <h2>Search for Music</h2>
+        </template>
         <template #body>
           <search-bar></search-bar>
         </template>
