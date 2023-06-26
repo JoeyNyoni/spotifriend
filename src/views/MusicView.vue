@@ -9,6 +9,7 @@
       </template>
     </basic-modal>
   </Teleport>
+
   <basic-card>
     <div class="container">
       <div v-if="item" class="row">
@@ -17,9 +18,9 @@
         </div>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
           <div class="row">
-            <span>Artist: <p>{{ fullArtists }}</p></span>
-            <span>Name: <p>{{ item.name }}</p></span>
-            <span>Release Date: <p>{{ item.release_date }}</p></span>
+            <span class="bold">Artist: <p class="item-detail">{{ fullArtists }}</p></span>
+            <span class="bold">Name: <p class="item-detail">{{ item.name }}</p></span>
+            <span class="bold">Release Date: <p class="item-detail">{{ item.release_date }}</p></span>
             <div class="row">
               <basic-button link @click="goToLink(item.external_urls.spotify)">View in Spotify</basic-button>
               <basic-button @click="toggleShowModal = true">Share The Music</basic-button>
@@ -28,7 +29,7 @@
         </div>
       </div>
 
-      <div v-else>An error has occurred or the item does not exist</div>
+      <div class="error-message" v-else>An error has occurred or the item does not exist</div>
     </div>
   </basic-card>
 </template>
@@ -86,5 +87,10 @@ export default {
   border-radius: 25px;
   max-height: 100%;
   max-width: 100%;
+}
+
+.item-detail {
+  font-size: 14px;
+  font-style: italic;
 }
 </style>

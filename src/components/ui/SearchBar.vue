@@ -10,6 +10,16 @@
         />
       </form>
     </div>
+    <div class="row" v-if="error && !isLoading">
+      <basic-card>
+        <div class="container">
+          <div class="row">
+            <h3>{{ error }}</h3>
+            <basic-button @click="performSearch">Try Again</basic-button>
+          </div>
+        </div>
+      </basic-card>
+    </div>
     <div class="row" v-if="searchResults.length > 0">
       <ul>
         <li v-for="result in searchResults" :key="result.id">
@@ -50,11 +60,15 @@ export default {
   data() {
     return {
       query: "",
+      error: "",
       searchResults: [],
+      isLoading: false,
     };
   },
   methods: {
     async performSearch() {
+      this.isLoading = true;
+      this.error = "";
       try {
         if (this.query) {
           await this.$store.dispatch("search/performSearch", this.query);
@@ -62,7 +76,9 @@ export default {
         }
       } catch (error) {
         console.log(error.message);
+        this.error = error.message;
       }
+      this.isLoading = false;
     },
     getFullArtists(obj: any) {
       const artistArray: string[] = [];
