@@ -1,0 +1,28 @@
+html,
+body {
+  min-height: 100vh;
+  height: 100vh;
+  height: auto;
+  margin: 0;
+}
+
+.h40 {
+  min-height: 40vh;
+  height: 40vh;
+}
+
+.h100 {
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.w100 {
+  min-width: 100%;
+  width: 100%;
+}
+
+.error-message {
+  font-size: 12px;
+  color: red;
+}

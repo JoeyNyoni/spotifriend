@@ -14,8 +14,8 @@
         </div>
       </div>
       <div v-else>
-        <h2 v-if="errorMsg">Error: {{ errorMsg }}</h2>
-        <h2 v-else>No results found</h2>
+        <h2 v-if="error" class="error-message">Error: {{ error }}</h2>
+        <h2 v-else class="error-message">No results found</h2>
       </div>
     </basic-card>
   </div>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       newAlbums: [],
-      errorMsg: "",
+      error: "",
       isLoading: false,
     };
   },
@@ -39,15 +39,15 @@ export default {
   },
   methods: {
     async getNewAlbums() {
+      this.isLoading = true;
+      this.error = "";
       try {
-        this.isLoading = true;
         await this.$store.dispatch("albums/getNewAlbums");
         this.newAlbums = this.$store.getters["albums/newAlbums"];
-        this.isLoading = false;
       } catch (error: any) {
-        this.errorMsg = error.message;
-        this.isLoading = false;
+        this.error = error.message;
       }
+      this.isLoading = false;
     },
   },
 };
