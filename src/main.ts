@@ -11,6 +11,7 @@ import store from "./store";
 import BasicCard from "./components/ui/BasicCard.vue";
 import BasicButton from "./components/ui/BasicButton.vue";
 import BasicModal from "./components/ui/BasicModal.vue";
+import BasicSpinner from "./components/ui/BasicSpinner.vue";
 import SearchBar from "./components/ui/SearchBar.vue";
 
 createApp(App)
@@ -19,5 +20,6 @@ createApp(App)
   .component("BasicCard", BasicCard)
   .component("BasicButton", BasicButton)
   .component("BasicModal", BasicModal)
+  .component("BasicSpinner", BasicSpinner)
   .component("SearchBar", SearchBar)
   .mount("#app");

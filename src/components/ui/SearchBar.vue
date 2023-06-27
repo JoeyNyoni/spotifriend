@@ -10,47 +10,46 @@
         />
       </form>
     </div>
-    <div class="row" v-if="error && !isLoading">
+    
+    <div class="row" v-if="query">
       <basic-card>
-        <div class="container">
+        <div v-if="isLoading">
+          <basic-spinner></basic-spinner>
+        </div>
+
+        <div class="container" v-if="error && !isLoading">
           <div class="row">
-            <h3>{{ error }}</h3>
+            <h3 class="error-message">{{ error }}</h3>
             <basic-button @click="performSearch">Try Again</basic-button>
           </div>
         </div>
-      </basic-card>
-    </div>
-    <div class="row" v-if="searchResults.length > 0">
-      <ul>
-        <li v-for="result in searchResults" :key="result.id">
-          <basic-card>
-            <div class="container">
-              <div class="row">
-                <router-link
-                  :to="{
-                    name: 'music-view',
-                    params: { id: result.id },
-                  }"
-                >
-                <div class="row">
-                  <div class="col-xs-4 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <img
-                      v-if="result?.type === `album`"
-                      v-bind:src="result.images[2].url"
-                    />
-                    <img v-else v-bind:src="result.album.images[2].url" />
-                  </div>
-                  <div class="col-xs-8 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                    <span class="row desc">Title: {{ result.name }}</span>
-                    <span class="row desc">Artist: {{ getFullArtists(result) }}</span>
+
+        <div class="row" v-if="searchResults.length > 0 && !isLoading">
+          <ul>
+            <li v-for="result in searchResults" :key="result.id">
+              <basic-card>
+                <div class="container">
+                  <div class="row">
+                    <router-link :to="{ name: 'music-view', params: { id: result.id } }">
+                      <div class="row">
+                        <div class="col-xs-4 col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                          <img v-if="result?.type === `album`" v-bind:src="result.images[2].url" />
+                          <img v-else v-bind:src="result.album.images[2].url" />
+                        </div>
+                        
+                        <div class="col-xs-8 col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                          <span class="row desc">Title: {{ result.name }}</span>
+                          <span class="row desc">Artist: {{ getFullArtists(result) }}</span>
+                        </div>
+                    </div>
+                    </router-link>
                   </div>
                 </div>
-                </router-link>
-              </div>
-            </div>
-          </basic-card>
-        </li>
-      </ul>
+              </basic-card>
+            </li>
+          </ul>
+        </div>
+      </basic-card>
     </div>
   </div>
 </template>
@@ -100,8 +99,5 @@ export default {
 input {
   min-width: 100%;
   border-radius: 10px;
-}
-li {
-  list-style: none;
 }
 </style>
